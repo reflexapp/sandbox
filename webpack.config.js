@@ -3,9 +3,15 @@ module.exports = {
     module: {
         rules: [{
             test: /\.(js|jsx)$/,
-            exclude: /node_modules/,
-
-        }
+            exclude: /node_modules/
+        },
+        {
+            test: /\.(sa|sc|c)ss$/,
+            exclude: /(node_modules|bower_components)/,
+            use : [
+                "css-loader"
+            ]
+        } 
         ]
     },
     resolve: {
