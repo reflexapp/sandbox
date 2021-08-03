@@ -27,5 +27,6 @@ app.create = (el) => {
     initServices(core,services).then(()=>{
         app.render(core)(container, state)
     })
+    return container
 }
 export {app}

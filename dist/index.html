@@ -14,7 +14,14 @@
     <script>
         (function(S) {
            var el = document.getElementById("container")
-           S.app.create(el) 
+           var container = S.app.create(el) 
+          var top = 30
+           window.addEventListener("resize", (d) => {
+             container.width =  window.innerWidth
+             container.height = window.innerHeight - top
+             container.emit("resize")
+            })
+           
         })(sand)
     </script>
 </body>
