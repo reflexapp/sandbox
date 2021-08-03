@@ -1,10 +1,11 @@
 import app from "app"
-import {GenericContainer, Services, serviceBridge} from "@reflexiv/reflexiv"
+import {GenericContainer, Services, services} from "@reflexiv/reflexiv"
 
 /* service options */
-var services = new Services()
-services.Register("@reflexiv/service-bridge",{init:serviceBridge, options:{}})
-
+var _services_ = new Services()
+app.dependencies.forEach((d)=>{
+    _services_.Register("@reflexiv/service-"+d, {init:services[d], options:{}})
+})
 const initServices = (core, services) => {
         var q = services.List().map((s) => {
             var f 
@@ -24,7 +25,7 @@ app.create = (el) => {
     var core = {}
     var state = {}
     var container = new GenericContainer(el)
-    initServices(core,services).then(()=>{
+    initServices(core,_services_).then(()=>{
         app.render(core)(container, state)
     })
     return container

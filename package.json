@@ -18,7 +18,7 @@
   "author": "zhuxp",
   "license": "MIT",
   "dependencies": {
-    "@reflexiv/reflexiv": "^0.0.6",
+    "@reflexiv/reflexiv": "^0.0.7",
     "app": "../pkg-starter"
   },
   "devDependencies": {
