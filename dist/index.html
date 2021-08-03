@@ -14,8 +14,9 @@
     <script>
         (function(S) {
            var el = document.getElementById("container")
-           var container = S.app.create(el) 
-          var top = 30
+            var state = {}
+           var container = S.app.create(el,state) 
+           var top = 30
            window.addEventListener("resize", (d) => {
              container.width =  window.innerWidth
              container.height = window.innerHeight - top

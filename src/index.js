@@ -21,9 +21,9 @@ const initServices = (core, services) => {
         return Promise.all(q)
 }
 
-app.create = (el) => {
+app.create = (el, state) => {
     var core = {}
-    var state = {}
+    var state = state || {}
     var container = new GenericContainer(el)
     initServices(core,_services_).then(()=>{
         app.render(core)(container, state)
