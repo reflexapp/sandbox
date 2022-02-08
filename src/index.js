@@ -1,9 +1,15 @@
 import app from "app"
-import {GenericContainer, Services, services} from "@reflexiv/reflexiv"
-
+import {GenericContainer,Services} from "@reflexiv/base"
+import serviceData from "@reflexiv/service-data"
+import serviceBridge from "@reflexiv/service-bridge"
+var _app = app({})
+const services = {
+    "data":serviceData,
+    "bridge":serviceBridge
+}
 /* service options */
 var _services_ = new Services()
-app.dependencies.forEach((d)=>{
+_app.dependencies.forEach((d)=>{
     _services_.Register("@reflexiv/service-"+d, {init:services[d], options:{}})
 })
 const initServices = (core, services) => {
@@ -21,13 +27,13 @@ const initServices = (core, services) => {
         return Promise.all(q)
 }
 
-app.create = (el, state) => {
+_app.create = (el, state) => {
     var core = {}
     var state = state || {}
     var container = new GenericContainer(el)
     initServices(core,_services_).then(()=>{
-        app.render(core)(container, state)
+        _app.render(core)(container, state)
     })
     return container
 }
-export {app}
+export {_app as app}

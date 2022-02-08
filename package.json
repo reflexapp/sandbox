@@ -18,8 +18,10 @@
   "author": "zhuxp",
   "license": "MIT",
   "dependencies": {
-    "@reflexiv/reflexiv": "^0.0.9",
-    "app": "../pkg-starter"
+    "@reflexiv/base": "../../reflexiv/base",
+    "@reflexiv/service-data": "../../reflexiv/service-data",
+    "@reflexiv/service-bridge": "../../reflexiv/service-bridge",
+    "app": "../pkg-chart"
   },
   "devDependencies": {
     "css-loader": "^6.2.0",
